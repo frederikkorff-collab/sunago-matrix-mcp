@@ -1,0 +1,2021 @@
+{
+  "endpoint": "https://sunago-matrix.com/mcp",
+  "counts": {
+    "total": 105,
+    "readOnly": 31,
+    "write": 74,
+    "destructive": 19,
+    "softDelete": 5,
+    "permanentDelete": 13,
+    "needsConfirmation": 10,
+    "financeGated": 8,
+    "financeRead": 4,
+    "financeWrite": 4
+  },
+  "featureGates": [
+    "contracts.create",
+    "contracts.edit",
+    "contracts.view",
+    "crm.create",
+    "crm.edit",
+    "crm.view",
+    "finance.create",
+    "finance.edit",
+    "finance.view",
+    "hr.create",
+    "hr.edit",
+    "hr.view",
+    "offers.view",
+    "projects.create",
+    "projects.edit",
+    "projects.view",
+    "reports.view",
+    "resources.create",
+    "resources.delete",
+    "resources.edit",
+    "resources.view",
+    "risks.create",
+    "risks.delete",
+    "risks.edit",
+    "risks.view",
+    "tasks.create",
+    "tasks.edit",
+    "tasks.view",
+    "time.approve",
+    "time.create",
+    "time.delete",
+    "time.edit",
+    "time.view"
+  ],
+  "groups": [
+    {
+      "key": "whoami",
+      "label": "Identity",
+      "blurb": "Who the signed-in person is, and what they are allowed to see.",
+      "tools": [
+        "whoami"
+      ]
+    },
+    {
+      "key": "crm",
+      "label": "CRM",
+      "blurb": "Leads, contacts, deals and follow-ups.",
+      "tools": [
+        "crm_create_contact",
+        "crm_create_deal",
+        "crm_create_followup",
+        "crm_create_lead",
+        "crm_delete_contact",
+        "crm_delete_deal",
+        "crm_delete_followup",
+        "crm_delete_lead",
+        "crm_get_contacts",
+        "crm_get_deals",
+        "crm_get_followups",
+        "crm_get_leads",
+        "crm_log_activity",
+        "crm_restore_contact",
+        "crm_restore_deal",
+        "crm_restore_lead",
+        "crm_update_contact",
+        "crm_update_deal",
+        "crm_update_followup",
+        "crm_update_lead"
+      ]
+    },
+    {
+      "key": "projects",
+      "label": "Projects",
+      "blurb": "Projects and everything hanging off them: team, materials, risks, billing.",
+      "tools": [
+        "projects_add_document",
+        "projects_add_team_member",
+        "projects_assign_pricing_group",
+        "projects_confirm_completion",
+        "projects_create",
+        "projects_create_billing_milestone",
+        "projects_create_external_service",
+        "projects_create_material",
+        "projects_create_pricing_group",
+        "projects_create_risk",
+        "projects_delete",
+        "projects_delete_billing_milestone",
+        "projects_delete_document",
+        "projects_delete_external_service",
+        "projects_delete_material",
+        "projects_delete_pricing_group",
+        "projects_delete_risk",
+        "projects_get",
+        "projects_get_billing_plan",
+        "projects_get_external_services",
+        "projects_get_finance",
+        "projects_get_financials",
+        "projects_get_invoicing",
+        "projects_get_materials",
+        "projects_get_pricing_groups",
+        "projects_get_risks",
+        "projects_get_team_allocation",
+        "projects_reactivate",
+        "projects_remove_team_member",
+        "projects_restore",
+        "projects_unassign_pricing_group",
+        "projects_update",
+        "projects_update_billing_milestone",
+        "projects_update_external_service",
+        "projects_update_invoicing",
+        "projects_update_material",
+        "projects_update_pricing_group",
+        "projects_update_risk",
+        "projects_update_team_member"
+      ]
+    },
+    {
+      "key": "tasks",
+      "label": "Tasks",
+      "blurb": "Tasks on projects, and the dependencies between them.",
+      "tools": [
+        "tasks_add_dependency",
+        "tasks_create",
+        "tasks_delete",
+        "tasks_get",
+        "tasks_get_dependencies",
+        "tasks_remove_dependency",
+        "tasks_restore",
+        "tasks_update"
+      ]
+    },
+    {
+      "key": "timelog",
+      "label": "Time and expenses",
+      "blurb": "Logging hours, approving them, and out-of-pocket expenses.",
+      "tools": [
+        "timelog_add_expense",
+        "timelog_approve_expense",
+        "timelog_approve_time",
+        "timelog_delete_entry",
+        "timelog_delete_expense",
+        "timelog_get_activity_types",
+        "timelog_get_entries",
+        "timelog_get_expenses",
+        "timelog_get_loggable_projects",
+        "timelog_log_time",
+        "timelog_recalculate_cost",
+        "timelog_update_entry",
+        "timelog_update_expense"
+      ]
+    },
+    {
+      "key": "resources",
+      "label": "Resource planning",
+      "blurb": "Allocating people across projects over time.",
+      "tools": [
+        "resources_create_allocation",
+        "resources_delete_allocation",
+        "resources_get",
+        "resources_update_allocation"
+      ]
+    },
+    {
+      "key": "hr",
+      "label": "HR",
+      "blurb": "Employees and the workspace's own roles.",
+      "tools": [
+        "hr_create_employee",
+        "hr_get_employees",
+        "hr_get_roles",
+        "hr_update_employee"
+      ]
+    },
+    {
+      "key": "proposals",
+      "label": "Proposals",
+      "blurb": "Proposal documents. Read-only through MCP, by choice.",
+      "tools": [
+        "proposals_get"
+      ]
+    },
+    {
+      "key": "contracts",
+      "label": "Contracts",
+      "blurb": "Contracts attached to deals and projects.",
+      "tools": [
+        "contracts_create",
+        "contracts_get",
+        "contracts_update"
+      ]
+    },
+    {
+      "key": "notes",
+      "label": "Notes",
+      "blurb": "Notes with @-mentions on a lead, deal, contact or task.",
+      "tools": [
+        "notes_create",
+        "notes_delete",
+        "notes_get",
+        "notes_update"
+      ]
+    },
+    {
+      "key": "notifications",
+      "label": "Notifications",
+      "blurb": "Your own notifications, and messages to colleagues.",
+      "tools": [
+        "notifications_delete",
+        "notifications_get",
+        "notifications_mark_read",
+        "notifications_send"
+      ]
+    },
+    {
+      "key": "reports",
+      "label": "Reports",
+      "blurb": "Finished reports rather than raw rows.",
+      "tools": [
+        "reports_get"
+      ]
+    },
+    {
+      "key": "list",
+      "label": "Recycle bin",
+      "blurb": "Deleted records, kept for 30 days.",
+      "tools": [
+        "list_trash"
+      ]
+    },
+    {
+      "key": "tool",
+      "label": "Meta",
+      "blurb": "Find a tool by keyword, and call one by name.",
+      "tools": [
+        "tool_invoke",
+        "tool_search"
+      ]
+    }
+  ],
+  "tools": [
+    {
+      "name": "contracts_create",
+      "title": "Create contract",
+      "summary": "Create a contract record.",
+      "group": "contracts",
+      "readOnly": false,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "contracts",
+          "action": "create"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "contracts_get",
+      "title": "Get contracts",
+      "summary": "List contracts (RLS-scoped).",
+      "group": "contracts",
+      "readOnly": true,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "contracts",
+          "action": "view"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "contracts_update",
+      "title": "Update contract",
+      "summary": "Update fields on a contract.",
+      "group": "contracts",
+      "readOnly": false,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "contracts",
+          "action": "edit"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "crm_create_contact",
+      "title": "Create contact",
+      "summary": "Create a CRM contact: a named person, with their address, phone numbers and CVR/VAT number.",
+      "group": "crm",
+      "readOnly": false,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "crm",
+          "action": "create"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "crm_create_deal",
+      "title": "Create deal",
+      "summary": "Create a CRM deal: a named opportunity with a value, a stage and a close date.",
+      "group": "crm",
+      "readOnly": false,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "crm",
+          "action": "create"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "crm_create_followup",
+      "title": "Create follow-up",
+      "summary": "Create a new follow-up task linked to a lead, deal, or contact.",
+      "group": "crm",
+      "readOnly": false,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "crm",
+          "action": "create"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "crm_create_lead",
+      "title": "Create lead",
+      "summary": "Create a new CRM lead in the caller's workspace.",
+      "group": "crm",
+      "readOnly": false,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "crm",
+          "action": "create"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "crm_delete_contact",
+      "title": "Delete contact",
+      "summary": "Soft-delete a CRM contact: it moves to the recycle bin for 30 days and can be brought back with crm_restore_contact.",
+      "group": "crm",
+      "readOnly": false,
+      "destructive": true,
+      "deletion": "soft",
+      "needsConfirmation": false,
+      "needsAdmin": true,
+      "permissions": [],
+      "dynamicPermission": null
+    },
+    {
+      "name": "crm_delete_deal",
+      "title": "Delete deal",
+      "summary": "Soft-delete a CRM deal: it moves to the recycle bin for 30 days and can be brought back with crm_restore_deal.",
+      "group": "crm",
+      "readOnly": false,
+      "destructive": true,
+      "deletion": "soft",
+      "needsConfirmation": false,
+      "needsAdmin": true,
+      "permissions": [],
+      "dynamicPermission": null
+    },
+    {
+      "name": "crm_delete_followup",
+      "title": "Delete follow-up",
+      "summary": "PERMANENTLY delete a follow-up.",
+      "group": "crm",
+      "readOnly": false,
+      "destructive": true,
+      "deletion": "permanent",
+      "needsConfirmation": true,
+      "needsAdmin": true,
+      "permissions": [],
+      "dynamicPermission": null
+    },
+    {
+      "name": "crm_delete_lead",
+      "title": "Delete lead",
+      "summary": "Soft-delete a CRM lead: it moves to the recycle bin for 30 days and can be brought back with crm_restore_lead.",
+      "group": "crm",
+      "readOnly": false,
+      "destructive": true,
+      "deletion": "soft",
+      "needsConfirmation": false,
+      "needsAdmin": true,
+      "permissions": [],
+      "dynamicPermission": null
+    },
+    {
+      "name": "crm_get_contacts",
+      "title": "Get contacts",
+      "summary": "List CRM contacts (RLS-scoped).",
+      "group": "crm",
+      "readOnly": true,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "crm",
+          "action": "view"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "crm_get_deals",
+      "title": "Get deals",
+      "summary": "List CRM deals (RLS-scoped).",
+      "group": "crm",
+      "readOnly": true,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "crm",
+          "action": "view"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "crm_get_followups",
+      "title": "Get follow-ups",
+      "summary": "List follow-up tasks (RLS-scoped).",
+      "group": "crm",
+      "readOnly": true,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "crm",
+          "action": "view"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "crm_get_leads",
+      "title": "Get leads",
+      "summary": "List CRM leads (RLS-scoped).",
+      "group": "crm",
+      "readOnly": true,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "crm",
+          "action": "view"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "crm_log_activity",
+      "title": "Log activity on a deal",
+      "summary": "Append an activity log entry (note, call, meeting, email) to a deal.",
+      "group": "crm",
+      "readOnly": false,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "crm",
+          "action": "edit"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "crm_restore_contact",
+      "title": "Restore contact",
+      "summary": "Restore a soft-deleted contact from the recycle bin.",
+      "group": "crm",
+      "readOnly": false,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [],
+      "dynamicPermission": null
+    },
+    {
+      "name": "crm_restore_deal",
+      "title": "Restore deal",
+      "summary": "Restore a soft-deleted deal from the recycle bin.",
+      "group": "crm",
+      "readOnly": false,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [],
+      "dynamicPermission": null
+    },
+    {
+      "name": "crm_restore_lead",
+      "title": "Restore lead",
+      "summary": "Restore a soft-deleted lead from the recycle bin.",
+      "group": "crm",
+      "readOnly": false,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [],
+      "dynamicPermission": null
+    },
+    {
+      "name": "crm_update_contact",
+      "title": "Update contact",
+      "summary": "Update fields on a contact, including its address, extra phone numbers, CVR/VAT number, collaborator mark and which list it is on.",
+      "group": "crm",
+      "readOnly": false,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "crm",
+          "action": "edit"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "crm_update_deal",
+      "title": "Update deal",
+      "summary": "Update fields on a deal.",
+      "group": "crm",
+      "readOnly": false,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "crm",
+          "action": "edit"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "crm_update_followup",
+      "title": "Update follow-up",
+      "summary": "Update a follow-up, or close it by passing completed: true - which also stamps completed_at with the current time.",
+      "group": "crm",
+      "readOnly": false,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "crm",
+          "action": "edit"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "crm_update_lead",
+      "title": "Update lead",
+      "summary": "Update fields on a lead.",
+      "group": "crm",
+      "readOnly": false,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "crm",
+          "action": "edit"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "hr_create_employee",
+      "title": "Create employee",
+      "summary": "Create a new employee record.",
+      "group": "hr",
+      "readOnly": false,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "hr",
+          "action": "create"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "hr_get_employees",
+      "title": "Get employees",
+      "summary": "List employees.",
+      "group": "hr",
+      "readOnly": true,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "hr",
+          "action": "view"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "hr_get_roles",
+      "title": "Get roles",
+      "summary": "List the roles defined in the caller's workspace, as set up under Role Management in Matrix.",
+      "group": "hr",
+      "readOnly": true,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "hr",
+          "action": "view"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "hr_update_employee",
+      "title": "Update employee",
+      "summary": "Update an employee record.",
+      "group": "hr",
+      "readOnly": false,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "hr",
+          "action": "edit"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "list_trash",
+      "title": "List recycle bin",
+      "summary": "List soft-deleted records currently in the recycle bin (leads, deals, contacts, tasks, projects).",
+      "group": "list",
+      "readOnly": true,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": true,
+      "permissions": [],
+      "dynamicPermission": null
+    },
+    {
+      "name": "notes_create",
+      "title": "Add a note, optionally tagging colleagues",
+      "summary": "Add a note to a lead, deal, contact or task.",
+      "group": "notes",
+      "readOnly": false,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [],
+      "dynamicPermission": "edit"
+    },
+    {
+      "name": "notes_delete",
+      "title": "Delete a note",
+      "summary": "PERMANENTLY delete one of YOUR OWN notes together with its mentions.",
+      "group": "notes",
+      "readOnly": false,
+      "destructive": true,
+      "deletion": "permanent",
+      "needsConfirmation": true,
+      "needsAdmin": false,
+      "permissions": [],
+      "dynamicPermission": "edit"
+    },
+    {
+      "name": "notes_get",
+      "title": "Get notes on a record",
+      "summary": "List the notes on a lead, deal, contact or task, newest first, with the author's name and every colleague tagged in each note resolved to a name.",
+      "group": "notes",
+      "readOnly": true,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [],
+      "dynamicPermission": "view"
+    },
+    {
+      "name": "notes_update",
+      "title": "Edit a note",
+      "summary": "Rewrite one of YOUR OWN notes.",
+      "group": "notes",
+      "readOnly": false,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [],
+      "dynamicPermission": "edit"
+    },
+    {
+      "name": "notifications_delete",
+      "title": "Delete notifications",
+      "summary": "PERMANENTLY delete the signed-in user's own notifications.",
+      "group": "notifications",
+      "readOnly": false,
+      "destructive": true,
+      "deletion": "permanent",
+      "needsConfirmation": true,
+      "needsAdmin": false,
+      "permissions": [],
+      "dynamicPermission": null
+    },
+    {
+      "name": "notifications_get",
+      "title": "Get my notifications",
+      "summary": "List the signed-in user's own Matrix notifications, newest first.",
+      "group": "notifications",
+      "readOnly": true,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [],
+      "dynamicPermission": null
+    },
+    {
+      "name": "notifications_mark_read",
+      "title": "Mark notifications read",
+      "summary": "Mark the signed-in user's own notifications as read.",
+      "group": "notifications",
+      "readOnly": false,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [],
+      "dynamicPermission": null
+    },
+    {
+      "name": "notifications_send",
+      "title": "Send a notification to colleagues",
+      "summary": "Send an in-app Matrix notification to one or more colleagues in YOUR workspace.",
+      "group": "notifications",
+      "readOnly": false,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [],
+      "dynamicPermission": null
+    },
+    {
+      "name": "projects_add_document",
+      "title": "Add project document",
+      "summary": "Register a project document reference.",
+      "group": "projects",
+      "readOnly": false,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "projects",
+          "action": "edit"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "projects_add_team_member",
+      "title": "Add team member to project",
+      "summary": "Assign an employee to a project.",
+      "group": "projects",
+      "readOnly": false,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "projects",
+          "action": "edit"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "projects_assign_pricing_group",
+      "title": "Assign team member to pricing group",
+      "summary": "Put a project team member on a billing rate group.",
+      "group": "projects",
+      "readOnly": false,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "projects",
+          "action": "edit"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "projects_confirm_completion",
+      "title": "Confirm an auto-completed project is finished",
+      "summary": "Confirm that a project the nightly automation closed for passing its end_date really is finished.",
+      "group": "projects",
+      "readOnly": false,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "projects",
+          "action": "edit"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "projects_create",
+      "title": "Create project",
+      "summary": "Create a new project.",
+      "group": "projects",
+      "readOnly": false,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "projects",
+          "action": "create"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "projects_create_billing_milestone",
+      "title": "Create billing milestone",
+      "summary": "Add a fixed-fee billing milestone to a project's billing plan - this is what lets a fixed-price project be invoiced in instalments.",
+      "group": "projects",
+      "readOnly": false,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "finance",
+          "action": "create"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "projects_create_external_service",
+      "title": "Create external service",
+      "summary": "Add an external service line to a project.",
+      "group": "projects",
+      "readOnly": false,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "projects",
+          "action": "edit"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "projects_create_material",
+      "title": "Create material",
+      "summary": "Add a material line to a project.",
+      "group": "projects",
+      "readOnly": false,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "projects",
+          "action": "edit"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "projects_create_pricing_group",
+      "title": "Create pricing group",
+      "summary": "Create a billing rate group on a project (e.g.",
+      "group": "projects",
+      "readOnly": false,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "projects",
+          "action": "edit"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "projects_create_risk",
+      "title": "Create risk",
+      "summary": "Log a new project risk.",
+      "group": "projects",
+      "readOnly": false,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "risks",
+          "action": "create"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "projects_delete",
+      "title": "Delete project",
+      "summary": "Soft-delete a project: it moves to the recycle bin for 30 days (cascading to its tasks) and can be brought back with projects_restore.",
+      "group": "projects",
+      "readOnly": false,
+      "destructive": true,
+      "deletion": "soft",
+      "needsConfirmation": false,
+      "needsAdmin": true,
+      "permissions": [],
+      "dynamicPermission": null
+    },
+    {
+      "name": "projects_delete_billing_milestone",
+      "title": "Delete billing milestone",
+      "summary": "PERMANENTLY delete a fixed-fee billing milestone.",
+      "group": "projects",
+      "readOnly": false,
+      "destructive": true,
+      "deletion": "permanent",
+      "needsConfirmation": true,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "finance",
+          "action": "edit"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "projects_delete_document",
+      "title": "Delete project document reference",
+      "summary": "PERMANENTLY delete a project document ROW.",
+      "group": "projects",
+      "readOnly": false,
+      "destructive": true,
+      "deletion": "permanent",
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [],
+      "dynamicPermission": null
+    },
+    {
+      "name": "projects_delete_external_service",
+      "title": "Delete external service",
+      "summary": "PERMANENTLY delete an external/subcontractor service line from a project.",
+      "group": "projects",
+      "readOnly": false,
+      "destructive": true,
+      "deletion": "permanent",
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [],
+      "dynamicPermission": null
+    },
+    {
+      "name": "projects_delete_material",
+      "title": "Delete material",
+      "summary": "PERMANENTLY delete a material line from a project.",
+      "group": "projects",
+      "readOnly": false,
+      "destructive": true,
+      "deletion": "permanent",
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [],
+      "dynamicPermission": null
+    },
+    {
+      "name": "projects_delete_pricing_group",
+      "title": "Delete pricing group",
+      "summary": "PERMANENTLY delete a billing rate group from a project.",
+      "group": "projects",
+      "readOnly": false,
+      "destructive": true,
+      "deletion": "permanent",
+      "needsConfirmation": true,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "projects",
+          "action": "edit"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "projects_delete_risk",
+      "title": "Delete risk",
+      "summary": "PERMANENTLY delete a project risk.",
+      "group": "projects",
+      "readOnly": false,
+      "destructive": true,
+      "deletion": "permanent",
+      "needsConfirmation": true,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "risks",
+          "action": "delete"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "projects_get",
+      "title": "Get projects",
+      "summary": "List projects the signed-in user can see for project management (RLS-scoped).",
+      "group": "projects",
+      "readOnly": true,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "projects",
+          "action": "view"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "projects_get_billing_plan",
+      "title": "Get project billing plan",
+      "summary": "List fixed-fee billing milestones for a project - the instalment plan a fixed-price project is invoiced against.",
+      "group": "projects",
+      "readOnly": true,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "finance",
+          "action": "view"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "projects_get_external_services",
+      "title": "Get project external services",
+      "summary": "List external/subcontractor service lines on a project, with budgeted vs adjusted cost and markup.",
+      "group": "projects",
+      "readOnly": true,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "projects",
+          "action": "view"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "projects_get_finance",
+      "title": "Get project finance",
+      "summary": "Get latest project finance snapshot(s), newest first.",
+      "group": "projects",
+      "readOnly": true,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "finance",
+          "action": "view"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "projects_get_financials",
+      "title": "Get project financials (full P&L)",
+      "summary": "Full financial picture for one project - budget, spent-to-date, FAC (forecast at completion), revenue, profit/loss and forecasted margin.",
+      "group": "projects",
+      "readOnly": true,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "finance",
+          "action": "view"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "projects_get_invoicing",
+      "title": "Get project invoicing settings",
+      "summary": "Get invoicing settings for a project.",
+      "group": "projects",
+      "readOnly": true,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "finance",
+          "action": "view"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "projects_get_materials",
+      "title": "Get project materials",
+      "summary": "List material cost lines on a project, with markup and billable flags.",
+      "group": "projects",
+      "readOnly": true,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "projects",
+          "action": "view"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "projects_get_pricing_groups",
+      "title": "Get project pricing groups",
+      "summary": "List the billing rate groups on a project, including which team members are assigned to each.",
+      "group": "projects",
+      "readOnly": true,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "projects",
+          "action": "view"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "projects_get_risks",
+      "title": "Get risks",
+      "summary": "List risks (optionally filtered by project).",
+      "group": "projects",
+      "readOnly": true,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "risks",
+          "action": "view"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "projects_get_team_allocation",
+      "title": "Get project team + allocations",
+      "summary": "List team members and their allocations for a project.",
+      "group": "projects",
+      "readOnly": true,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "projects",
+          "action": "view"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "projects_reactivate",
+      "title": "Reactivate a closed project with a new end date",
+      "summary": "Reopen a completed or archived project and give it a new end_date.",
+      "group": "projects",
+      "readOnly": false,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "projects",
+          "action": "edit"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "projects_remove_team_member",
+      "title": "Remove team member from project",
+      "summary": "Take an employee off a project's team.",
+      "group": "projects",
+      "readOnly": false,
+      "destructive": true,
+      "deletion": "other",
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "projects",
+          "action": "edit"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "projects_restore",
+      "title": "Restore project",
+      "summary": "Restore a soft-deleted project from the recycle bin.",
+      "group": "projects",
+      "readOnly": false,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [],
+      "dynamicPermission": null
+    },
+    {
+      "name": "projects_unassign_pricing_group",
+      "title": "Remove team member from pricing group",
+      "summary": "Take a project team member off their billing rate group without removing them from the project.",
+      "group": "projects",
+      "readOnly": false,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "projects",
+          "action": "edit"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "projects_update",
+      "title": "Update project",
+      "summary": "Update fields on a project, including revenue / revenue_ceiling and the materials, external-services and expense budgets.",
+      "group": "projects",
+      "readOnly": false,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "projects",
+          "action": "edit"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "projects_update_billing_milestone",
+      "title": "Update billing milestone",
+      "summary": "Update a fixed-fee billing milestone.",
+      "group": "projects",
+      "readOnly": false,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "finance",
+          "action": "edit"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "projects_update_external_service",
+      "title": "Update external service",
+      "summary": "Update an external or subcontractor service line.",
+      "group": "projects",
+      "readOnly": false,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "projects",
+          "action": "edit"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "projects_update_invoicing",
+      "title": "Update project invoicing settings",
+      "summary": "Create or update a project's invoicing settings (upsert on project_id).",
+      "group": "projects",
+      "readOnly": false,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "finance",
+          "action": "edit"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "projects_update_material",
+      "title": "Update material",
+      "summary": "Update a material line.",
+      "group": "projects",
+      "readOnly": false,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "projects",
+          "action": "edit"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "projects_update_pricing_group",
+      "title": "Update pricing group",
+      "summary": "Rename a pricing group or change its hourly rate.",
+      "group": "projects",
+      "readOnly": false,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "projects",
+          "action": "edit"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "projects_update_risk",
+      "title": "Update risk",
+      "summary": "Update a project risk.",
+      "group": "projects",
+      "readOnly": false,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "risks",
+          "action": "edit"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "projects_update_team_member",
+      "title": "Update team allocation",
+      "summary": "Update a project team member's allocation.",
+      "group": "projects",
+      "readOnly": false,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "projects",
+          "action": "edit"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "proposals_get",
+      "title": "Get proposals",
+      "summary": "List offer documents / proposals (RLS-scoped).",
+      "group": "proposals",
+      "readOnly": true,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "offers",
+          "action": "view"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "reports_get",
+      "title": "Get reports & analytics",
+      "summary": "Server-side aggregated reports across time, revenue, pipeline and utilization.",
+      "group": "reports",
+      "readOnly": true,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "reports",
+          "action": "view"
+        },
+        {
+          "feature": "crm",
+          "action": "view"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "resources_create_allocation",
+      "title": "Create manual (non-project) allocation",
+      "summary": "Manual allocation NOT tied to a project, but to an activity type (e.g.",
+      "group": "resources",
+      "readOnly": false,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "resources",
+          "action": "create"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "resources_delete_allocation",
+      "title": "Delete manual allocation",
+      "summary": "PERMANENTLY delete a manual (non-project) resource allocation.",
+      "group": "resources",
+      "readOnly": false,
+      "destructive": true,
+      "deletion": "permanent",
+      "needsConfirmation": true,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "resources",
+          "action": "delete"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "resources_get",
+      "title": "Get resources / allocations",
+      "summary": "Unified capacity view.",
+      "group": "resources",
+      "readOnly": true,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "resources",
+          "action": "view"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "resources_update_allocation",
+      "title": "Update manual allocation",
+      "summary": "Update a manual (non-project) resource allocation.",
+      "group": "resources",
+      "readOnly": false,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "resources",
+          "action": "edit"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "tasks_add_dependency",
+      "title": "Link two tasks",
+      "summary": "Record that one task waits on, blocks, or is related to another.",
+      "group": "tasks",
+      "readOnly": false,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "tasks",
+          "action": "edit"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "tasks_create",
+      "title": "Create task",
+      "summary": "Create a new task in a project.",
+      "group": "tasks",
+      "readOnly": false,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "tasks",
+          "action": "create"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "tasks_delete",
+      "title": "Delete task",
+      "summary": "Soft-delete a task: it moves to the recycle bin for 30 days and can be brought back with tasks_restore.",
+      "group": "tasks",
+      "readOnly": false,
+      "destructive": true,
+      "deletion": "soft",
+      "needsConfirmation": false,
+      "needsAdmin": true,
+      "permissions": [],
+      "dynamicPermission": null
+    },
+    {
+      "name": "tasks_get",
+      "title": "Get tasks",
+      "summary": "List tasks (RLS-scoped).",
+      "group": "tasks",
+      "readOnly": true,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "tasks",
+          "action": "view"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "tasks_get_dependencies",
+      "title": "Get task dependencies",
+      "summary": "Everything linked to one task, in both directions: what it is waiting on, what is waiting on it, and what it is merely related to.",
+      "group": "tasks",
+      "readOnly": true,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "tasks",
+          "action": "view"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "tasks_remove_dependency",
+      "title": "Unlink two tasks",
+      "summary": "PERMANENTLY remove a link between two tasks.",
+      "group": "tasks",
+      "readOnly": false,
+      "destructive": true,
+      "deletion": "permanent",
+      "needsConfirmation": true,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "tasks",
+          "action": "edit"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "tasks_restore",
+      "title": "Restore task",
+      "summary": "Restore a soft-deleted task from the recycle bin.",
+      "group": "tasks",
+      "readOnly": false,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [],
+      "dynamicPermission": null
+    },
+    {
+      "name": "tasks_update",
+      "title": "Update task",
+      "summary": "Update fields on a task.",
+      "group": "tasks",
+      "readOnly": false,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "tasks",
+          "action": "edit"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "timelog_add_expense",
+      "title": "Add expense",
+      "summary": "Add an expense for the signed-in user, optionally attached to a project.",
+      "group": "timelog",
+      "readOnly": false,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "time",
+          "action": "create"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "timelog_approve_expense",
+      "title": "Approve expense",
+      "summary": "Approve an expense.",
+      "group": "timelog",
+      "readOnly": false,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "time",
+          "action": "approve"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "timelog_approve_time",
+      "title": "Approve time entry",
+      "summary": "Approve a time entry.",
+      "group": "timelog",
+      "readOnly": false,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "time",
+          "action": "approve"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "timelog_delete_entry",
+      "title": "Delete time entry",
+      "summary": "PERMANENTLY delete one or more time entries.",
+      "group": "timelog",
+      "readOnly": false,
+      "destructive": true,
+      "deletion": "permanent",
+      "needsConfirmation": true,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "time",
+          "action": "delete"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "timelog_delete_expense",
+      "title": "Delete expense",
+      "summary": "PERMANENTLY delete one or more expenses.",
+      "group": "timelog",
+      "readOnly": false,
+      "destructive": true,
+      "deletion": "permanent",
+      "needsConfirmation": true,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "time",
+          "action": "delete"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "timelog_get_activity_types",
+      "title": "Get activity types",
+      "summary": "List activity types available in the signed-in user's workspace for non-billable time logging.",
+      "group": "timelog",
+      "readOnly": true,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "time",
+          "action": "view"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "timelog_get_entries",
+      "title": "Get time entries",
+      "summary": "List time entries (RLS-scoped).",
+      "group": "timelog",
+      "readOnly": true,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "time",
+          "action": "view"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "timelog_get_expenses",
+      "title": "Get expenses",
+      "summary": "List expenses.",
+      "group": "timelog",
+      "readOnly": true,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "time",
+          "action": "view"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "timelog_get_loggable_projects",
+      "title": "Get projects I can log time on",
+      "summary": "List only projects where the signed-in user is assigned as a team member or project manager and can log project time.",
+      "group": "timelog",
+      "readOnly": true,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "time",
+          "action": "view"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "timelog_log_time",
+      "title": "Log time",
+      "summary": "Log a time entry for the signed-in user, or for another employee via employee_id (requires time approval rights).",
+      "group": "timelog",
+      "readOnly": false,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "time",
+          "action": "create"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "timelog_recalculate_cost",
+      "title": "Repair 0-cost time entries",
+      "summary": "Repair time entries whose historical_cost_price_per_hour was stamped as 0 because the employee had no salary data when the time was logged.",
+      "group": "timelog",
+      "readOnly": false,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "time",
+          "action": "approve"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "timelog_update_entry",
+      "title": "Update time entry",
+      "summary": "Update fields on a draft/rejected time entry.",
+      "group": "timelog",
+      "readOnly": false,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "time",
+          "action": "edit"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "timelog_update_expense",
+      "title": "Update expense",
+      "summary": "Update an expense.",
+      "group": "timelog",
+      "readOnly": false,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [
+        {
+          "feature": "time",
+          "action": "edit"
+        }
+      ],
+      "dynamicPermission": null
+    },
+    {
+      "name": "tool_invoke",
+      "title": "Invoke tool by name",
+      "summary": "Invoke a Sunago Matrix MCP tool by its exact name with a JSON arguments object.",
+      "group": "tool",
+      "readOnly": false,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [],
+      "dynamicPermission": null
+    },
+    {
+      "name": "tool_search",
+      "title": "Search tools",
+      "summary": "Search available Sunago Matrix MCP tools by keyword.",
+      "group": "tool",
+      "readOnly": true,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [],
+      "dynamicPermission": null
+    },
+    {
+      "name": "whoami",
+      "title": "Who am I",
+      "summary": "Return the identity of the currently authenticated Sunago Matrix user (auth id, email, employee id, workspace, and feature permissions).",
+      "group": "whoami",
+      "readOnly": true,
+      "destructive": false,
+      "deletion": null,
+      "needsConfirmation": false,
+      "needsAdmin": false,
+      "permissions": [],
+      "dynamicPermission": null
+    }
+  ]
+}
