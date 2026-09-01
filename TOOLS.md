@@ -190,7 +190,7 @@ Tasks on projects, and the dependencies between them.
 | `tasks_update` | write | `tasks.edit` |  |
 
 - **`tasks_add_dependency`** Record that one task waits on, blocks, or is related to another.
-- **`tasks_create`** Create a new task in a project.
+- **`tasks_create`** Create a task in a project.
 - **`tasks_delete`** Soft-delete a task: it moves to the recycle bin for 30 days and can be brought back with tasks_restore.
 - **`tasks_get`** List tasks (RLS-scoped).
 - **`tasks_get_dependencies`** Everything linked to one task, in both directions: what it is waiting on, what is waiting on it, and what it is merely related to.

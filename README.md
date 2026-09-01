@@ -107,8 +107,14 @@ Three properties hold across all of them:
    supplies an exact confirmation phrase. [PERMISSIONS.md](PERMISSIONS.md) has the full split.
 
 There is deliberately **no tool** for issuing or sending an invoice, recording a payment,
-reading or writing anyone's salary, touching bank or card details, granting permissions,
-creating or editing a proposal, deleting a contract, or deleting an employee.
+reading or writing anyone's salary, touching bank or card details, assigning a role your
+workspace has not defined, creating or editing a proposal, deleting a contract, or deleting an
+employee.
+
+One capability does go further than the rest and is worth knowing before you connect anything:
+`hr_update_employee` can grant or remove **workspace administrator rights**, behind the `hr.edit`
+permission. That is the same authority the person already has in the Matrix interface, but it is
+the widest thing here. [PERMISSIONS.md](PERMISSIONS.md) covers it.
 
 ## Documentation
 

@@ -32,8 +32,10 @@ to talk to the database, so every query runs under row-level security **as you**
 The consequences are worth stating plainly:
 
 - An assistant connected as you can reach exactly the workspace you belong to, and no other.
-- It cannot escalate. There is no administrative path through the server that your own account
-  does not already have.
+- It cannot do anything your own account cannot already do in the Matrix interface. There is no
+  administrative path through the server that bypasses your permissions. That is not the same as
+  saying it can do nothing privileged: if your account holds `hr.edit`, it can grant workspace
+  administrator rights, which is covered under section 3.
 - Revoking your Matrix access revokes the assistant's, because they are the same access.
 - Clearing the client's stored credentials ends the connection immediately.
 
@@ -113,11 +115,23 @@ That is the entire financial write surface.
   permissions the caller holds. No tool writes them.
 - **Touch bank details, card details, or anything else that could move money out of the
   business.** No such data is exposed and no such tool exists.
-- **Grant a permission or make someone an admin.** `hr_update_employee` cannot set the admin
-  flag, and the `super_admin` role is closed to MCP entirely. Roles are validated against the
-  roles your workspace actually has, read at call time.
+- **Assign a role your workspace has not defined.** Roles are validated against the roles your
+  workspace actually has, read at the moment of the call rather than from a copy, because which
+  roles exist is a per-workspace question and a guard against privilege escalation must not depend
+  on a snapshot being current. Anything outside that list is refused, with the valid options
+  named. `hr_get_roles` returns the same list, so an assistant can look before it writes.
 - **Create or edit a proposal.** Proposals are readable and deliberately not writable here.
 - **Delete a contract, or delete an employee.** Neither tool exists.
+
+### The widest thing on this page
+
+`hr_update_employee` can set `is_admin`, behind `hr.edit`. Administrator rights are what
+control deletion and the recycle bin, so an assistant connected as someone who can edit HR can
+grant or remove them. This is the same authority that person already has in the Matrix interface,
+not a new one, and it was a deliberate decision that HR access is a sufficient bar for it. If it
+is more than you want an assistant able to do, withhold `hr.edit` from the accounts you connect.
+`hr_update_employee` says so in its own description, so a well-behaved agent will tell you before
+it acts.
 
 ### One write that looks larger than it is
 

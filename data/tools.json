@@ -1631,7 +1631,7 @@
     {
       "name": "tasks_create",
       "title": "Create task",
-      "summary": "Create a new task in a project.",
+      "summary": "Create a task in a project.",
       "group": "tasks",
       "readOnly": false,
       "destructive": false,

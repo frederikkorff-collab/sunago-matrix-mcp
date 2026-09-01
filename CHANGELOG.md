@@ -84,7 +84,8 @@ Recorded here because their absence is a decision rather than a gap:
 - `proposals_create` and `proposals_update`. Proposals stay read-only through MCP.
 - Deleting a contract.
 - `hr_delete_employee`.
-- Setting the admin flag through `hr_update_employee`. `super_admin` is closed to MCP entirely.
+- Assigning a role the workspace has not defined. Roles are validated against the workspace's own
+  list at call time rather than against a compiled-in copy.
 - MCP resources. Everything is reachable through a tool call, and client support is uneven.
 - Rate limiting on reads.
 
