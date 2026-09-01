@@ -1,0 +1,210 @@
+{
+  "ok": true,
+  "results": [
+    {
+      "claim": "The endpoint is https://sunago-matrix.com/mcp",
+      "evidence": "src/lib/mcp/index.ts, publicMcpUrl",
+      "pass": true
+    },
+    {
+      "claim": "The server reports version 0.3.0",
+      "evidence": "src/lib/mcp/index.ts, defineMcp version",
+      "pass": true
+    },
+    {
+      "claim": "It runs on the official @modelcontextprotocol/sdk",
+      "evidence": "src/lib/mcp/server/handler.ts imports McpServer from @modelcontextprotocol/sdk",
+      "pass": true
+    },
+    {
+      "claim": "Transport is streamable HTTP",
+      "evidence": "handler.ts uses WebStandardStreamableHTTPServerTransport",
+      "pass": true
+    },
+    {
+      "claim": "It is stateless: a fresh server per request, so no session is shared between callers",
+      "evidence": "handler.ts builds the server inside the request handler and never reuses it",
+      "pass": true
+    },
+    {
+      "claim": "Tokens are verified against the issuer's published keys, with no shared secret",
+      "evidence": "server/oauth.ts uses jose createRemoteJWKSet against the issuer jwks",
+      "pass": true
+    },
+    {
+      "claim": "Every call runs as the signed-in user, under row-level security",
+      "evidence": "_client.ts forwards the caller's bearer token to Supabase",
+      "pass": true
+    },
+    {
+      "claim": "There is no service-role key anywhere in the MCP surface",
+      "evidence": "no occurrence of service_role in src/lib/mcp",
+      "pass": true
+    },
+    {
+      "claim": "105 tools",
+      "evidence": "generated from tools/list",
+      "pass": true
+    },
+    {
+      "claim": "31 of them only read",
+      "evidence": "readOnlyHint from tools/list",
+      "pass": true
+    },
+    {
+      "claim": "74 can write",
+      "evidence": "readOnlyHint from tools/list",
+      "pass": true
+    },
+    {
+      "claim": "Four named prompts: what is waiting on me, project status, log time, ready to invoice",
+      "evidence": "src/lib/mcp/prompts.ts",
+      "pass": true
+    },
+    {
+      "claim": "Each tool checks the same feature permission the Matrix interface checks",
+      "evidence": "_shared.ts requirePermission calls the check_user_permission RPC",
+      "pass": true
+    },
+    {
+      "claim": "A refusal names the missing permission so it can be relayed to the user",
+      "evidence": "_shared.ts requirePermission returns \"missing '<feature>.<type>' permission\"",
+      "pass": true
+    },
+    {
+      "claim": "4 tools read financial data behind finance.view",
+      "evidence": "requirePermission(supabase, 'finance', 'view', ...) in projects.ts",
+      "pass": true
+    },
+    {
+      "claim": "4 tools write behind finance.create or finance.edit",
+      "evidence": "requirePermission(supabase, 'finance', 'create'|'edit', ...) in projects.ts",
+      "pass": true
+    },
+    {
+      "claim": "No tool issues, sends or records payment against an invoice",
+      "evidence": "no match for /from\\(\"invoices|send_invoice|mark_paid|record_payment/i in src/lib/mcp/tools",
+      "pass": true
+    },
+    {
+      "claim": "No tool reads or writes an annual salary",
+      "evidence": "no match for /annual_gross_salary/ in src/lib/mcp/tools",
+      "pass": true
+    },
+    {
+      "claim": "No tool reads or writes a gross hourly rate",
+      "evidence": "no match for /hourly_gross_rate/ in src/lib/mcp/tools",
+      "pass": true
+    },
+    {
+      "claim": "No tool reads or writes a national ID",
+      "evidence": "no match for /national_id/ in src/lib/mcp/tools",
+      "pass": true
+    },
+    {
+      "claim": "No tool touches bank or card details",
+      "evidence": "no match for /\\biban\\b|\\bbic\\b|bank_account|card_number/i in src/lib/mcp/tools",
+      "pass": true
+    },
+    {
+      "claim": "Proposals cannot be created or updated through MCP",
+      "evidence": "no match for /name: \"proposals_(create|update)\"/ in src/lib/mcp/tools",
+      "pass": true
+    },
+    {
+      "claim": "No tool deletes a contract",
+      "evidence": "no match for /name: \"contracts_delete\"/ in src/lib/mcp/tools",
+      "pass": true
+    },
+    {
+      "claim": "No tool deletes an employee",
+      "evidence": "no match for /name: \"hr_delete_employee\"/ in src/lib/mcp/tools",
+      "pass": true
+    },
+    {
+      "claim": "The derived cost per hour is returned per named employee by reports_get, behind reports.view",
+      "evidence": "reports.ts selects cost_price_per_hour and returns cost_per_hour on each row",
+      "pass": true
+    },
+    {
+      "claim": "The derived cost per hour is returned per named employee by timelog_recalculate_cost, behind time.approve",
+      "evidence": "timelog.ts builds perEmployee rows carrying rate, after requiring time.approve",
+      "pass": true
+    },
+    {
+      "claim": "timelog_recalculate_cost previews by default and only writes when told to",
+      "evidence": "timelog.ts declares dry_run with .default(true)",
+      "pass": true
+    },
+    {
+      "claim": "hr_update_employee can grant or remove workspace administrator rights, behind hr.edit",
+      "evidence": "hr.ts declares is_admin on the input schema and gates on hr.edit",
+      "pass": true
+    },
+    {
+      "claim": "hr_get_employees returns no salary, cost rate or national ID",
+      "evidence": "hr.ts selects an explicit column list containing none of them",
+      "pass": true
+    },
+    {
+      "claim": "Roles are validated against the workspace's own list, read at call time",
+      "evidence": "hr.ts resolveWorkspaceRole reads workspaceRoles and refuses anything not in it",
+      "pass": true
+    },
+    {
+      "claim": "5 deletes are soft: 30 days in the recycle bin, and admin only",
+      "evidence": "each says so in its own description, and calls requireAdmin",
+      "pass": true
+    },
+    {
+      "claim": "13 deletes are permanent",
+      "evidence": "each description begins PERMANENTLY",
+      "pass": true
+    },
+    {
+      "claim": "10 tools require a human-supplied confirmation phrase",
+      "evidence": "requireConfirmation in the handler",
+      "pass": true
+    },
+    {
+      "claim": "notifications_delete asks for a phrase only when several are deleted at once",
+      "evidence": "notifications.ts guards requireConfirmation behind if (notification_ids)",
+      "pass": true
+    },
+    {
+      "claim": "12 tools are restricted to workspace admins",
+      "evidence": "requireAdmin in the handler or in the factory that builds it",
+      "pass": true
+    },
+    {
+      "claim": "Every write is recorded with the tool, the caller and the resolved arguments",
+      "evidence": "_reporting.ts defineTool audits after resolveReferences has run",
+      "pass": true
+    },
+    {
+      "claim": "Reads are not recorded, and not rate limited",
+      "evidence": "_reporting.ts audits and meters only when isWrite",
+      "pass": true
+    },
+    {
+      "claim": "Writes are limited to 120 per minute per user",
+      "evidence": "_reporting.ts WRITE_LIMIT_PER_MINUTE",
+      "pass": true
+    },
+    {
+      "claim": "Every tool runs through that wrapper, so none can ship without an audit row",
+      "evidence": "every module under tools/ imports defineTool from ./_reporting",
+      "pass": true
+    },
+    {
+      "claim": "Reference arguments accept a name as readily as a UUID, resolved in the wrapper",
+      "evidence": "_resolve.ts FIELD_KINDS, applied by defineTool before any handler sees the input",
+      "pass": true
+    },
+    {
+      "claim": "An ambiguous name returns every candidate rather than picking one",
+      "evidence": "_resolve.ts raises rather than choosing when more than one row matches",
+      "pass": true
+    }
+  ]
+}

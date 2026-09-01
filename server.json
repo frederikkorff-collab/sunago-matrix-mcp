@@ -1,0 +1,18 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "com.sunago-matrix/matrix",
+  "title": "SUNAGO Matrix",
+  "description": "Project management, CRM, time tracking and project economy for consulting and engineering firms",
+  "version": "0.3.0",
+  "websiteUrl": "https://sunago-matrix.com/ai-project-management",
+  "repository": {
+    "url": "https://github.com/frederikkorff-collab/sunago-matrix-mcp",
+    "source": "github"
+  },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://sunago-matrix.com/mcp"
+    }
+  ]
+}
