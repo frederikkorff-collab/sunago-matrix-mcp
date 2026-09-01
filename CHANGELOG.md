@@ -18,7 +18,9 @@ Anything that removes a tool, renames one, or narrows what a tool is allowed to 
 ## [0.3.0] - 2026-08-27
 
 The release that moved the server onto the official MCP SDK and closed most of what was
-missing around it. The tool count reached 105, including the two meta tools.
+missing around it. It took the catalogue past a hundred tools; the current count is in
+[TOOLS.md](TOOLS.md), which is generated rather than written down here, so this file does not
+carry a number that goes stale.
 
 ### Added
 
@@ -29,9 +31,11 @@ missing around it. The tool count reached 105, including the two meta tools.
   working @-mentions on leads, deals, contacts and tasks, and the caller's own notifications.
 - **Deletion and restoration.** Soft delete to a 30-day recycle bin for leads, contacts, deals,
   projects and tasks, with matching restore tools and a searchable `list_trash`.
-- **Names in place of ids.** 97 arguments now accept a name as readily as a UUID. The resolution
-  happens in the wrapper every tool runs through, so no tool can be left out of it. An ambiguous
-  name returns every candidate rather than picking one.
+- **Names in place of ids.** Reference arguments accept a name as readily as a UUID. The
+  resolution happens in the wrapper every tool runs through, so no tool can be left out of it, and
+  it covers project, employee, manager, owner, assignee, customer, contact, deal, lead, task,
+  activity type and pricing group references. An ambiguous name returns every candidate rather
+  than picking one.
 - **An audit trail.** Every write records the tool, the caller and the arguments as resolved,
   written by the wrapper so all tools are covered in one place.
 - **Rate limiting on writes.** 120 per minute per user, measured on the audit trail. Reads are
@@ -89,10 +93,11 @@ Recorded here because their absence is a decision rather than a gap:
 - MCP resources. Everything is reachable through a tool call, and client support is uneven.
 - Rate limiting on reads.
 
-## [0.2.x] - 2026-08-02 to 2026-08-06
+## Before 0.3.0 - 2026-08-02 to 2026-08-06
 
-Not tracked in a changelog at the time. Reconstructed from the commit history for completeness;
-treat the detail as indicative rather than exhaustive.
+These changes shipped without a version of their own and without a changelog. Reconstructed from
+the commit history for completeness; treat the detail as indicative rather than exhaustive, and
+note that no release number was ever attached to them.
 
 ### Added
 
@@ -101,8 +106,8 @@ treat the detail as indicative rather than exhaustive.
 
 ### Fixed
 
-- `projects_get_pricing_groups` crashed on some workspaces.
-- Two id and foreign-key mix-ups in project reads.
+- `projects_get_pricing_groups` crashed.
+- Two id and foreign-key mix-ups, alongside a set of broken reads.
 - `tool_invoke` ran a target tool's handler without validating against that tool's own input
   schema, so every argument default stayed undefined. A paginated read then came back empty while
   still reporting a non-zero total, which an agent reads as "no data". It now validates first.
@@ -111,5 +116,5 @@ treat the detail as indicative rather than exhaustive.
 
 ## Earlier
 
-The server existed before this and was not versioned in public. Nothing before 0.2 is documented
+The server existed before this and was not versioned in public. Nothing earlier is documented
 here, because the record needed to write it accurately does not exist.

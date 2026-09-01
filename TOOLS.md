@@ -59,9 +59,9 @@ Leads, contacts, deals and follow-ups.
 | `crm_get_followups` | read | `crm.view` |  |
 | `crm_get_leads` | read | `crm.view` |  |
 | `crm_log_activity` | write | `crm.edit` |  |
-| `crm_restore_contact` | write | none |  |
-| `crm_restore_deal` | write | none |  |
-| `crm_restore_lead` | write | none |  |
+| `crm_restore_contact` | write | none | admin only |
+| `crm_restore_deal` | write | none | admin only |
+| `crm_restore_lead` | write | none | admin only |
 | `crm_update_contact` | write | `crm.edit` |  |
 | `crm_update_deal` | write | `crm.edit` |  |
 | `crm_update_followup` | write | `crm.edit` |  |
@@ -123,7 +123,7 @@ Projects and everything hanging off them: team, materials, risks, billing.
 | `projects_get_team_allocation` | read | `projects.view` |  |
 | `projects_reactivate` | write | `projects.edit` |  |
 | `projects_remove_team_member` | write | `projects.edit` | deletes |
-| `projects_restore` | write | none |  |
+| `projects_restore` | write | none | admin only |
 | `projects_unassign_pricing_group` | write | `projects.edit` |  |
 | `projects_update` | write | `projects.edit` |  |
 | `projects_update_billing_milestone` | write | `finance.edit` |  |
@@ -186,7 +186,7 @@ Tasks on projects, and the dependencies between them.
 | `tasks_get` | read | `tasks.view` |  |
 | `tasks_get_dependencies` | read | `tasks.view` |  |
 | `tasks_remove_dependency` | write | `tasks.edit` | deletes, confirmation required |
-| `tasks_restore` | write | none |  |
+| `tasks_restore` | write | none | admin only |
 | `tasks_update` | write | `tasks.edit` |  |
 
 - **`tasks_add_dependency`** Record that one task waits on, blocks, or is related to another.

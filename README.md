@@ -12,8 +12,9 @@ pipeline, proposals, resource planning, projects, timesheets, expenses and repor
 system. This server exposes that workspace to an assistant as **105 tools**, so you can ask
 about your own business in the assistant you already use.
 
-The server is included on every Matrix plan. There is no separate licence, no per-call charge,
-and no API key to create.
+The server is part of the product rather than an add-on: there is nothing to buy to switch it on,
+calls are not metered, and there is no API key to create. What each tool can actually do follows
+your workspace's own feature permissions.
 
 ## What you can do with it
 
@@ -107,14 +108,18 @@ Three properties hold across all of them:
    supplies an exact confirmation phrase. [PERMISSIONS.md](PERMISSIONS.md) has the full split.
 
 There is deliberately **no tool** for issuing or sending an invoice, recording a payment,
-reading or writing anyone's salary, touching bank or card details, assigning a role your
-workspace has not defined, creating or editing a proposal, deleting a contract, or deleting an
-employee.
+reading or writing a salary, a gross hourly rate or a national ID, touching bank or card details,
+assigning a role your workspace has not defined, creating or editing a proposal, deleting a
+contract, or deleting an employee.
 
-One capability does go further than the rest and is worth knowing before you connect anything:
-`hr_update_employee` can grant or remove **workspace administrator rights**, behind the `hr.edit`
-permission. That is the same authority the person already has in the Matrix interface, but it is
-the widest thing here. [PERMISSIONS.md](PERMISSIONS.md) covers it.
+Two capabilities do go further than the rest, and both are set out in
+[PERMISSIONS.md](PERMISSIONS.md) rather than left to be discovered: the cost per hour derived from
+salary is returned by the employee utilisation report and by the cost repair tool, to callers who
+already hold `reports.view` or `time.approve`; and `hr_update_employee` can grant or remove
+**workspace administrator rights**, behind `hr.edit`. Both are the same authority the person
+already has in the Matrix interface, but they are the widest things here.
+
+
 
 ## Documentation
 

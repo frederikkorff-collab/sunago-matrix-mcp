@@ -17,7 +17,7 @@ own tool definitions and from the permission gate each handler runs before it ac
 | Delete, recoverable for 30 days | 5 |
 | Delete, permanent | 13 |
 | Require a human-supplied confirmation phrase | 10 |
-| Restricted to workspace admins | 7 |
+| Restricted to workspace admins | 12 |
 | Rate limit | 120 writes per minute per user |
 
 ## 1. Every call runs as you
@@ -110,9 +110,11 @@ That is the entire financial write surface.
 - **Issue an invoice, send one, or record a payment against one.** There is no such tool. The
   finance writes above change a project's billing milestones and its invoicing settings, and stop
   there.
-- **Read or write anyone's salary or cost rate.** `hr_get_employees` reads from a masked view and
-  selects a fixed set of columns; salary and national identifiers are not among them, whatever
-  permissions the caller holds. No tool writes them.
+- **Read or write a salary.** No tool on the server touches `annual_gross_salary`,
+  `hourly_gross_rate` or the national ID columns in either direction. `hr_get_employees` selects a
+  fixed column list, and none of them are on it, whatever permissions the caller holds. The cost
+  per hour derived from salary is a different matter, and is set out below rather than left to be
+  discovered.
 - **Touch bank details, card details, or anything else that could move money out of the
   business.** No such data is exposed and no such tool exists.
 - **Assign a role your workspace has not defined.** Roles are validated against the roles your
@@ -133,6 +135,19 @@ is more than you want an assistant able to do, withhold `hr.edit` from the accou
 `hr_update_employee` says so in its own description, so a well-behaved agent will tell you before
 it acts.
 
+### Where a cost per hour does show up
+
+Salary itself is never exposed. The cost per hour derived from it is, in exactly two places, and
+in both to a caller who already sees the same figure in Matrix:
+
+| Tool | Permission | What it returns |
+| --- | --- | --- |
+| `reports_get` with `kind: employee_utilization` | `reports.view` | A cost per hour per named employee, and the monetary value of any utilisation shortfall. That is what the report is for. |
+| `timelog_recalculate_cost` | `time.approve` | The rate it would stamp, per named employee, alongside how many entries it would touch. |
+
+`projects_get_financials` and `projects_get_finance` return aggregates and carry no per-person
+rate. Nothing else on the server returns one, and nothing writes one.
+
 ### One write that looks larger than it is
 
 `timelog_recalculate_cost` repairs time entries that were stamped with a zero cost rate because
@@ -151,9 +166,10 @@ being deleted.
 `crm_delete_lead`, `crm_delete_contact`, `crm_delete_deal`, `projects_delete`, `tasks_delete`
 
 These soft-delete. The record moves to the recycle bin for 30 days and can be restored with the
-matching `_restore` tool. Deleting a project cascades to its tasks, and restoring it brings them
-back. Only a workspace admin can call any of them, regardless of what other permissions they
-hold, and `list_trash` is admin-only too.
+matching `_restore` tool, and deleting a project takes its tasks with it. Only a workspace admin
+can call any of them, regardless of what other permissions they hold. The same is true of the
+five restore tools and of `list_trash`, which is why twelve tools in all are admin-gated rather
+than the five listed here.
 
 ### Permanent (13 tools)
 
@@ -181,6 +197,9 @@ Never fill these in on your own - the human must supply them.
 The three that do not carry a confirmation phrase are `projects_delete_document`,
 `projects_delete_material` and `projects_delete_external_service`. All three still require
 `projects.edit`.
+
+One of the ten is conditional rather than absolute: `notifications_delete` asks for a phrase when
+several notifications are being deleted at once, and not when a single one is deleted by its id.
 
 `notes_delete` and `notifications_delete` only reach your own records.
 
@@ -212,7 +231,9 @@ the server exposes:
 - Every tool has a title, annotations, and a description long enough to say both what it does and
   when to reach for it.
 - A tool that advertises itself as read-only does not write.
-- A destructive tool cannot be triggered without a human.
+- Every destructive tool says in its own description whether it is reversible or permanent, so
+  an agent cannot present one as the other.
+- No destructive tool is also marked read-only.
 - The data behind [TOOLS.md](TOOLS.md) and the public
   [/mcp page](https://sunago-matrix.com/mcp) is regenerated from the live definitions and compared
   against the committed copy, so a permission gate that disappears from a handler fails the build

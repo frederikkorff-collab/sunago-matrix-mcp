@@ -530,7 +530,7 @@
       "destructive": false,
       "deletion": null,
       "needsConfirmation": false,
-      "needsAdmin": false,
+      "needsAdmin": true,
       "permissions": [],
       "dynamicPermission": null
     },
@@ -543,7 +543,7 @@
       "destructive": false,
       "deletion": null,
       "needsConfirmation": false,
-      "needsAdmin": false,
+      "needsAdmin": true,
       "permissions": [],
       "dynamicPermission": null
     },
@@ -556,7 +556,7 @@
       "destructive": false,
       "deletion": null,
       "needsConfirmation": false,
-      "needsAdmin": false,
+      "needsAdmin": true,
       "permissions": [],
       "dynamicPermission": null
     },
@@ -1332,7 +1332,7 @@
       "destructive": false,
       "deletion": null,
       "needsConfirmation": false,
-      "needsAdmin": false,
+      "needsAdmin": true,
       "permissions": [],
       "dynamicPermission": null
     },
@@ -1722,7 +1722,7 @@
       "destructive": false,
       "deletion": null,
       "needsConfirmation": false,
-      "needsAdmin": false,
+      "needsAdmin": true,
       "permissions": [],
       "dynamicPermission": null
     },
