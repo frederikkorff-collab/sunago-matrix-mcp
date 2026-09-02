@@ -167,4 +167,4 @@ hitting it usually means an agent is looping. Reads are not limited.
 - [TOOLS.md](TOOLS.md) - every tool and the permission behind it
 - [PERMISSIONS.md](PERMISSIONS.md) - the authorisation model, including read against write on
   financial data
-- [sunago-matrix.com/mcp](https://sunago-matrix.com/mcp) - the same material as a web page
+- [sunago-matrix.com/ai-project-management](https://sunago-matrix.com/ai-project-management) - the same material as a web page

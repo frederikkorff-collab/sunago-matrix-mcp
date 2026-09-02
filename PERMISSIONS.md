@@ -235,7 +235,7 @@ the server exposes:
   an agent cannot present one as the other.
 - No destructive tool is also marked read-only.
 - The data behind [TOOLS.md](TOOLS.md) and the public
-  [/mcp page](https://sunago-matrix.com/mcp) is regenerated from the live definitions and compared
+  [AI project management page](https://sunago-matrix.com/ai-project-management) is regenerated from the live definitions and compared
   against the committed copy, so a permission gate that disappears from a handler fails the build
   rather than quietly making a published claim false.
 

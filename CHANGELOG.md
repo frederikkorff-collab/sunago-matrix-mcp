@@ -13,7 +13,7 @@ Anything that removes a tool, renames one, or narrows what a tool is allowed to 
 ### Added
 
 - This documentation repository, and the public
-  [/mcp page](https://sunago-matrix.com/mcp) it accompanies.
+  [AI project management page](https://sunago-matrix.com/ai-project-management) it accompanies.
 
 ## [0.3.0] - 2026-08-27
 
