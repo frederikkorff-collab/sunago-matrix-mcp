@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "sunago-matrix": {
+      "type": "http",
+      "url": "https://sunago-matrix.com/mcp"
+    }
+  }
+}
