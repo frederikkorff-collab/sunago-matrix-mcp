@@ -14,6 +14,57 @@ Anything that removes a tool, renames one, or narrows what a tool is allowed to 
 
 - This documentation repository, and the public
   [AI project management page](https://sunago-matrix.com/ai-project-management) it accompanies.
+- **Names next to ids.** `timelog_get_entries` carries the employee's name and the project's
+  title, `resources_get` the employee's name and the project's title and status,
+  `crm_get_followups` the name of the lead, deal or contact and of the assignee,
+  `projects_get_team_allocation` and `projects_get_risks` the people's names, and both
+  `reports_get` kinds that list ids (`time_summary`, `project_finance_summary`) the names too.
+- **Weekly utilisation in `resources_get`.** With `from_date` and `to_date` the response carries,
+  per employee and per workspace week, capacity hours, committed hours and a percentage computed
+  by the same rules as the Resources tab in Matrix: day-level project allocations on projects that
+  are neither Completed nor Archived, plus manual allocations, against the employee's own capacity.
+  The calculation is a shared module with its own tests.
+- **Follow-up filters.** `crm_get_followups` takes `due_after`, `due_before` and `overdue`, and
+  every row says whether it is overdue.
+- **`hr_get_employees` returns `weekly_capacity_percentage`**, and its `meta` carries the
+  workspace's work week (weekly working hours, working days, week start) so the percentage can be
+  turned into hours.
+- **`reports_get`** `time_summary` groups by day, week or month (`group_by`) and filters by
+  employee; `project_finance_summary` filters by manager, pages by cursor and excludes deleted
+  projects. `projects_get_risks` filters by manager.
+- **`projects_create` asks about pricing groups** when a time-based project is created in Planning
+  without any, since until one exists every hour logged invoices as 0.
+
+### Changed
+
+- **`crm_get_followups` defaults to live references.** A follow-up is not deleted with its lead,
+  deal or contact (filter, not cascade): it is hidden while the record is in the recycle bin and
+  returns when the record is restored. `scope: unavailable` lists the hidden ones, `scope: all`
+  both. Before this, 110 open follow-ups on deleted leads were reported as open work in one
+  workspace where 30 were.
+- **`resources_get` never returns allocations on soft-deleted projects**, and leaves out
+  Completed and Archived projects unless `include_finished_projects` is true, matching the
+  Resources tab.
+- **`projects_get` no longer returns `spent_amount`.** It was a stored column maintained by a
+  database trigger and disagreed with the shared finance calculation. Spend, revenue and margin
+  come from `projects_get_financials`, which runs the same code as the Project Finance page and
+  the nightly snapshot.
+- **`projects_get_financials` says what its revenue is made of.** `revenue_breakdown` separates
+  the contract sum from rebilled costs on a fixed-price project. When no contract sum is set, the
+  percentages are `null` with a warning that says so, rather than a margin against 0.
+- **One allocation figure per team member.** `projects_add_team_member` no longer defaults
+  `allocation_hours` to 40 on a percentage allocation: a percentage row carries no hours and a
+  fixed-hours row no percentage, on create and on update. The descriptions of
+  `projects_add_team_member`, `projects_update_team_member`, `projects_get_team_allocation`,
+  `resources_get` and `resources_create_allocation` now state that a percentage is a share of the
+  employee's **own** weekly capacity (workspace weekly hours × the employee's
+  `weekly_capacity_percentage`), not of a full-time week.
+
+### Fixed
+
+- **Automatic finance snapshots counted no logged hours.** The snapshot job called a time-entry
+  RPC that raises under the service role, so every scheduled snapshot was written with zero time
+  spent. The job now runs the shared finance calculation.
 
 ## [0.3.0] - 2026-08-27
 

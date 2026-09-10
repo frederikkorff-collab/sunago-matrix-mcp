@@ -77,7 +77,7 @@ Leads, contacts, deals and follow-ups.
 - **`crm_delete_lead`** Soft-delete a CRM lead: it moves to the recycle bin for 30 days and can be brought back with crm_restore_lead.
 - **`crm_get_contacts`** List CRM contacts (RLS-scoped).
 - **`crm_get_deals`** List CRM deals (RLS-scoped).
-- **`crm_get_followups`** List follow-up tasks (RLS-scoped).
+- **`crm_get_followups`** List follow-up tasks (RLS-scoped), each with the name of the lead, deal or contact it belongs to and the assignee's name.
 - **`crm_get_leads`** List CRM leads (RLS-scoped).
 - **`crm_log_activity`** Append an activity log entry (note, call, meeting, email) to a deal.
 - **`crm_restore_contact`** Restore a soft-deleted contact from the recycle bin.
@@ -159,8 +159,8 @@ Projects and everything hanging off them: team, materials, risks, billing.
 - **`projects_get_invoicing`** Get invoicing settings for a project.
 - **`projects_get_materials`** List material cost lines on a project, with markup and billable flags.
 - **`projects_get_pricing_groups`** List the billing rate groups on a project, including which team members are assigned to each.
-- **`projects_get_risks`** List risks (optionally filtered by project).
-- **`projects_get_team_allocation`** List team members and their allocations for a project.
+- **`projects_get_risks`** List risks, with the project's title and the owner's name.
+- **`projects_get_team_allocation`** List team members and their allocations for a project, with each member's name.
 - **`projects_reactivate`** Reopen a completed or archived project and give it a new end_date.
 - **`projects_remove_team_member`** Take an employee off a project's team.
 - **`projects_restore`** Restore a soft-deleted project from the recycle bin.
@@ -224,7 +224,7 @@ Logging hours, approving them, and out-of-pocket expenses.
 - **`timelog_delete_entry`** PERMANENTLY delete one or more time entries.
 - **`timelog_delete_expense`** PERMANENTLY delete one or more expenses.
 - **`timelog_get_activity_types`** List activity types available in the signed-in user's workspace for non-billable time logging.
-- **`timelog_get_entries`** List time entries (RLS-scoped).
+- **`timelog_get_entries`** List time entries (RLS-scoped), each with the employee's name and the project's title (null when the entry has no project or the project is in the recycle bin).
 - **`timelog_get_expenses`** List expenses.
 - **`timelog_get_loggable_projects`** List only projects where the signed-in user is assigned as a team member or project manager and can log project time.
 - **`timelog_log_time`** Log a time entry for the signed-in user, or for another employee via employee_id (requires time approval rights).
@@ -260,7 +260,7 @@ Employees and the workspace's own roles.
 | `hr_update_employee` | write | `hr.edit` |  |
 
 - **`hr_create_employee`** Create a new employee record.
-- **`hr_get_employees`** List employees.
+- **`hr_get_employees`** List employees with their weekly_capacity_percentage, and the workspace's work week in meta (weekly working hours, working days, week start) so the percentage can be turned into hours.
 - **`hr_get_roles`** List the roles defined in the caller's workspace, as set up under Role Management in Matrix.
 - **`hr_update_employee`** Update an employee record.
 

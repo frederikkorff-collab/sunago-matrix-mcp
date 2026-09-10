@@ -470,7 +470,7 @@
     {
       "name": "crm_get_followups",
       "title": "Get follow-ups",
-      "summary": "List follow-up tasks (RLS-scoped).",
+      "summary": "List follow-up tasks (RLS-scoped), each with the name of the lead, deal or contact it belongs to and the assignee's name.",
       "group": "crm",
       "readOnly": true,
       "destructive": false,
@@ -653,7 +653,7 @@
     {
       "name": "hr_get_employees",
       "title": "Get employees",
-      "summary": "List employees.",
+      "summary": "List employees with their weekly_capacity_percentage, and the workspace's work week in meta (weekly working hours, working days, week start) so the percentage can be turned into hours.",
       "group": "hr",
       "readOnly": true,
       "destructive": false,
@@ -1254,7 +1254,7 @@
     {
       "name": "projects_get_risks",
       "title": "Get risks",
-      "summary": "List risks (optionally filtered by project).",
+      "summary": "List risks, with the project's title and the owner's name.",
       "group": "projects",
       "readOnly": true,
       "destructive": false,
@@ -1272,7 +1272,7 @@
     {
       "name": "projects_get_team_allocation",
       "title": "Get project team + allocations",
-      "summary": "List team members and their allocations for a project.",
+      "summary": "List team members and their allocations for a project, with each member's name.",
       "group": "projects",
       "readOnly": true,
       "destructive": false,
@@ -1855,7 +1855,7 @@
     {
       "name": "timelog_get_entries",
       "title": "Get time entries",
-      "summary": "List time entries (RLS-scoped).",
+      "summary": "List time entries (RLS-scoped), each with the employee's name and the project's title (null when the entry has no project or the project is in the recycle bin).",
       "group": "timelog",
       "readOnly": true,
       "destructive": false,
